@@ -1,0 +1,81 @@
+﻿@*model WebApplication1.view_roleAndUnit*@
+
+@{
+    ViewBag.Title = "نقش جدید";
+    Layout = "~/Views/Shared/Layout/_LayoutPage.cshtml";
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<br />
+@using (Html.BeginForm("SetNewRole","AdminViewCallsC")){
+<div class="input-group mb-3" dir="rtl">
+    نام نقش جدید &nbsp;
+    <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1"><>
+    نام بخش &nbsp;
+   
+    @*
+    <select class="custom-select" id="inputGroupSelectUnitName" aria-label="Example select with button addon">
+        @foreach (var item in ViewBag.unitNames)
+        {
+            <option selected>@item</option>
+        }
+    </select>
+    *@
+
+    <select class="form-control">
+        @foreach (var item in Model.unitName)
+        {
+        <option>@Html.Label("unitName")</option>
+        }
+    </select>
+    
+    &nbsp;
+    
+</div>
+
+<div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">کد نقش</th>
+                <th scope="col">نقش های موجود</th>
+            </tr>
+       </thead>
+        <tbody>
+            
+            @foreach(var item in ViewBag.existRoleNames)
+            {
+                <tr>
+                <th scope="row"> @item.id</th>
+                <td>@item.roleName</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <input type="submit" value="Submit">
+</div> 
+}
+<div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">کد نقش</th>
+                <th scope="col">نقش های موجود</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            
+            @foreach(var item in ViewBag.RoleNames)
+            {
+                <tr>
+                    <th scope="row"> @item.id</th>
+                    <td>@item.roleName</td>
+                    
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+</div>

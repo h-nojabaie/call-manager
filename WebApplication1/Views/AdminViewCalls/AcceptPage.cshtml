@@ -1,0 +1,72 @@
+﻿@model WebApplication1.user
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>کاربران جدید</title>
+</head>
+<body>
+    <style>
+         body, div, h1, h2, h3, h4, h5, h6, p, ul, ol, li, dl, dt, dd, img, form, fieldset, input, textarea, blockquote {
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+
+        body {
+            background: #a9afb5;
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 18px;
+            line-height: 24px;
+        }
+
+        .logo {
+            height: 115px;
+            width: 263px;
+            margin: 20px auto 0px auto;
+            background: url(logo.png);
+        }
+
+    </style>
+    <form dir="rtl">
+        <br />نام کاربری :
+        <br />@Html.Editor("userName")
+        <br />نام :
+        <br /> @Html.Editor("name")
+        <br /> نام خانوادگی :
+        <br /> @Html.Editor("familyName")
+        <br />   کد ملی :
+        <br />@Html.Editor("nationalityCode")
+        <br /> رایانامه:
+        <br />@Html.Display("email")
+        <br /> جنسیت :
+        <input type="radio" name="gen" value="male">مرد
+        <input type="radio" name="gen" value="female"> زن
+       
+        <br />  <br /> بخش : <select>
+            @foreach (var item in ViewBag.unitNames)
+            {
+                <option>@item</option>
+            }
+        </select>
+       سمت : <select>
+            @foreach (var item in ViewBag.roleNames)
+            {
+                <option>@item</option>
+            }
+        </select>
+
+        <br />
+        <br /> با ثبت این کاربر موافقم.  @Html.Editor("accepted")
+        <br />
+        <br /><input type="submit" value="ثبت نهایی" name=" register">
+              <input type="submit" value="رد پذیرش" name=" register">
+    </form>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="81aea91d947e4dd69e023237f574371b" Name="Diagram1">
+        <EntityTypeShape EntityType="manageCallsModel.call" Width="1.5" PointX="7.5" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="manageCallsModel.contact" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="manageCallsModel.log" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="manageCallsModel.number" Width="1.5" PointX="3" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="manageCallsModel.roleInUnit" Width="1.5" PointX="6" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="manageCallsModel.role" Width="1.5" PointX="3.75" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="manageCallsModel.sysdiagram" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="manageCallsModel.telephone" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="manageCallsModel.unit" Width="1.5" PointX="3.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="manageCallsModel.user" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="manageCallsModel.view_rawReports" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="manageCallsModel.view_roleAndUnit" Width="1.5" PointX="9.75" PointY="5.75" IsExpanded="true" />
+        <AssociationConnector Association="manageCallsModel.FK_call_number" ManuallyRouted="false" />
+        <AssociationConnector Association="manageCallsModel.FK_call_telephone" ManuallyRouted="false" />
+        <AssociationConnector Association="manageCallsModel.FK_contact_user" ManuallyRouted="false" />
+        <AssociationConnector Association="manageCallsModel.FK_telephone_contact" ManuallyRouted="false" />
+        <AssociationConnector Association="manageCallsModel.FK_log_user" ManuallyRouted="false" />
+        <AssociationConnector Association="manageCallsModel.FK_number_user" ManuallyRouted="false" />
+        <AssociationConnector Association="manageCallsModel.FK_roleInUnit_roles" ManuallyRouted="false" />
+        <AssociationConnector Association="manageCallsModel.FK_roleInUnit_unit" ManuallyRouted="false" />
+        <AssociationConnector Association="manageCallsModel.FK_roleInUnit_user" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
