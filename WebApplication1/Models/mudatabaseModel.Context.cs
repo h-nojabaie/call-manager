@@ -38,6 +38,6 @@ namespace WebApplication1.Models
         public virtual DbSet<view_rawReports> view_rawReports { get; set; }
         public virtual DbSet<view_roleAndUnit> view_roleAndUnit { get; set; }
 
-        public System.Data.Entity.DbSet<WebApplication.Models.Login> Logins { get; set; }
+        public System.Data.Entity.DbSet<WebApplication1.Models.Login> Logins { get; set; }
     }
 }
