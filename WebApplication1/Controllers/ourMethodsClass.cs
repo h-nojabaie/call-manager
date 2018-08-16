@@ -222,34 +222,33 @@ namespace WebApplication1.Controllers
             return result;
         }
         //---------------------------------فیلتر کردن گزارش ها---------------------//
-        //public static List<view_rawReports> report(string lastName, int? number, string chosenRole, int startDate, int finishDate, int? duration)
-        //{
-        //    var db = new manageCallsEntities2();
-        //    bool l = String.IsNullOrEmpty(lastName);// بر اساس نام خانوادگی
-         
+        public static List<view_rawReports> shownReport(string lastName, string number, string chosenRole, DateTime startDate, DateTime finishDate, TimeSpan? duration)
+        {
+            var db = new manageCallsEntities2();
+            
 
-        //  var report = from v in db.view_rawReports
-        //               where v.callDate.Day >= startDate
-        //               && v.callDate.Day <= finishDate
-        //                         select v;
-          
-        //    if (String.IsNullOrEmpty(lastName)==false)// بر اساس نام خانوادگی
-        //    {
-        //            report = report.Where(r => r.familyName.Contains(lastName));    
-        //    }
-        //    if (number != null)//بر اساس شماره داخلی
-        //        {
-        //            report = report.Where(r => r.number.Equals(number));
-        //        }
-        //    if (String.IsNullOrEmpty(chosenRole)==false)//براساس نقش انتخابی
-        //    {
-        //            report = report.Where(r => r.roleName.Contains(chosenRole)); 
-        //    }
-        //    //if(duration != null)//کاربران مشکوک
-        //    //{
-        //    //    report = report.Where(r => r.callDuration >= duration);
-        //    //}
-        //    //return report.ToList();
-        //}
+            var report = from v in db.view_rawReports
+                         where v.callDate >= startDate
+                         && v.callDate <= finishDate
+                         select v;
+
+            if (String.IsNullOrEmpty(lastName) == false)// بر اساس نام خانوادگی
+            {
+                report = report.Where(r => r.familyName.Contains(lastName));
+            }
+            if (number != null)//بر اساس شماره داخلی
+            {
+                report = report.Where(r => r.number.Equals(number));
+            }
+            if (String.IsNullOrEmpty(chosenRole) == false)//براساس نقش انتخابی
+            {
+                report = report.Where(r => r.roleName.Contains(chosenRole));
+            }
+            if (duration != null)//کاربران مشکوک
+            {
+                report = report.Where(r => r.callDuration >= duration);
+            }
+            return report.ToList();
+        }
     }
 }

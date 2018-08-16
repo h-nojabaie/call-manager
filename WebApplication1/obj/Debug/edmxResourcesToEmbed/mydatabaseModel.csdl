@@ -1,0 +1,306 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="manageCallsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="manageCallsEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="calls" EntityType="manageCallsModel.call" />
+    <EntitySet Name="contacts" EntityType="manageCallsModel.contact" />
+    <EntitySet Name="logs" EntityType="manageCallsModel.log" />
+    <EntitySet Name="numbers" EntityType="manageCallsModel.number" />
+    <EntitySet Name="roleInUnits" EntityType="manageCallsModel.roleInUnit" />
+    <EntitySet Name="roles" EntityType="manageCallsModel.role" />
+    <EntitySet Name="sysdiagrams" EntityType="manageCallsModel.sysdiagram" />
+    <EntitySet Name="telephones" EntityType="manageCallsModel.telephone" />
+    <EntitySet Name="units" EntityType="manageCallsModel.unit" />
+    <EntitySet Name="users" EntityType="manageCallsModel.user" />
+    <EntitySet Name="view_rawReports" EntityType="manageCallsModel.view_rawReports" />
+    <AssociationSet Name="FK_call_number" Association="manageCallsModel.FK_call_number">
+      <End Role="number" EntitySet="numbers" />
+      <End Role="call" EntitySet="calls" />
+    </AssociationSet>
+    <AssociationSet Name="FK_call_telephone" Association="manageCallsModel.FK_call_telephone">
+      <End Role="telephone" EntitySet="telephones" />
+      <End Role="call" EntitySet="calls" />
+    </AssociationSet>
+    <AssociationSet Name="FK_contact_user" Association="manageCallsModel.FK_contact_user">
+      <End Role="user" EntitySet="users" />
+      <End Role="contact" EntitySet="contacts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_telephone_contact" Association="manageCallsModel.FK_telephone_contact">
+      <End Role="contact" EntitySet="contacts" />
+      <End Role="telephone" EntitySet="telephones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_log_user" Association="manageCallsModel.FK_log_user">
+      <End Role="user" EntitySet="users" />
+      <End Role="log" EntitySet="logs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_number_user" Association="manageCallsModel.FK_number_user">
+      <End Role="user" EntitySet="users" />
+      <End Role="number" EntitySet="numbers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_roleInUnit_roles" Association="manageCallsModel.FK_roleInUnit_roles">
+      <End Role="role" EntitySet="roles" />
+      <End Role="roleInUnit" EntitySet="roleInUnits" />
+    </AssociationSet>
+    <AssociationSet Name="FK_roleInUnit_unit" Association="manageCallsModel.FK_roleInUnit_unit">
+      <End Role="unit" EntitySet="units" />
+      <End Role="roleInUnit" EntitySet="roleInUnits" />
+    </AssociationSet>
+    <AssociationSet Name="FK_roleInUnit_user" Association="manageCallsModel.FK_roleInUnit_user">
+      <End Role="user" EntitySet="users" />
+      <End Role="roleInUnit" EntitySet="roleInUnits" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="call">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="number" Type="Int32" Nullable="false" />
+    <Property Name="callDuration" Type="Int32" Nullable="false" />
+    <Property Name="callType" Type="Boolean" Nullable="false" />
+    <Property Name="telephone_id" Type="Int32" Nullable="false" />
+    <Property Name="comment" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="callDate" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="number1" Relationship="manageCallsModel.FK_call_number" FromRole="call" ToRole="number" />
+    <NavigationProperty Name="telephone" Relationship="manageCallsModel.FK_call_telephone" FromRole="call" ToRole="telephone" />
+  </EntityType>
+  <EntityType Name="contact">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="contactName" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="isPublic" Type="Boolean" Nullable="false" />
+    <Property Name="user_id" Type="Int32" Nullable="false" />
+    <Property Name="createDate" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="user" Relationship="manageCallsModel.FK_contact_user" FromRole="contact" ToRole="user" />
+    <NavigationProperty Name="telephones" Relationship="manageCallsModel.FK_telephone_contact" FromRole="contact" ToRole="telephone" />
+  </EntityType>
+  <EntityType Name="log">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="date" Type="Int32" Nullable="false" />
+    <Property Name="user_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="user" Relationship="manageCallsModel.FK_log_user" FromRole="log" ToRole="user" />
+  </EntityType>
+  <EntityType Name="number">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="num" Type="Int32" Nullable="false" />
+    <Property Name="createDate" Type="Int32" Nullable="false" />
+    <Property Name="user_id" Type="Int32" Nullable="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="calls" Relationship="manageCallsModel.FK_call_number" FromRole="number" ToRole="call" />
+    <NavigationProperty Name="user" Relationship="manageCallsModel.FK_number_user" FromRole="number" ToRole="user" />
+  </EntityType>
+  <EntityType Name="roleInUnit">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="createDate" Type="Int32" Nullable="false" />
+    <Property Name="role_id" Type="Int32" Nullable="false" />
+    <Property Name="unit_id" Type="Int32" Nullable="false" />
+    <Property Name="user_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="role" Relationship="manageCallsModel.FK_roleInUnit_roles" FromRole="roleInUnit" ToRole="role" />
+    <NavigationProperty Name="unit" Relationship="manageCallsModel.FK_roleInUnit_unit" FromRole="roleInUnit" ToRole="unit" />
+    <NavigationProperty Name="user" Relationship="manageCallsModel.FK_roleInUnit_user" FromRole="roleInUnit" ToRole="user" />
+  </EntityType>
+  <EntityType Name="role">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="roleName" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="createDate" Type="Int32" Nullable="false" />
+    <Property Name="unitID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="roleInUnits" Relationship="manageCallsModel.FK_roleInUnit_roles" FromRole="role" ToRole="roleInUnit" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="telephone">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="contact_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="calls" Relationship="manageCallsModel.FK_call_telephone" FromRole="telephone" ToRole="call" />
+    <NavigationProperty Name="contact" Relationship="manageCallsModel.FK_telephone_contact" FromRole="telephone" ToRole="contact" />
+  </EntityType>
+  <EntityType Name="unit">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="unitName" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="createDate" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="roleInUnits" Relationship="manageCallsModel.FK_roleInUnit_unit" FromRole="unit" ToRole="roleInUnit" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userName" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="password" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="familyName" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="nationalityCode" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="createDate" Type="Int32" Nullable="false" />
+    <Property Name="email" Type="String" Nullable="false" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="gender" Type="Boolean" Nullable="false" />
+    <Property Name="accepted" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="contacts" Relationship="manageCallsModel.FK_contact_user" FromRole="user" ToRole="contact" />
+    <NavigationProperty Name="logs" Relationship="manageCallsModel.FK_log_user" FromRole="user" ToRole="log" />
+    <NavigationProperty Name="numbers" Relationship="manageCallsModel.FK_number_user" FromRole="user" ToRole="number" />
+    <NavigationProperty Name="roleInUnits" Relationship="manageCallsModel.FK_roleInUnit_user" FromRole="user" ToRole="roleInUnit" />
+  </EntityType>
+  <EntityType Name="view_rawReports">
+    <Key>
+      <PropertyRef Name="name" />
+      <PropertyRef Name="familyName" />
+      <PropertyRef Name="num" />
+      <PropertyRef Name="active" />
+      <PropertyRef Name="unitName" />
+      <PropertyRef Name="roleName" />
+      <PropertyRef Name="id" />
+      <PropertyRef Name="number" />
+      <PropertyRef Name="callDuration" />
+      <PropertyRef Name="callType" />
+      <PropertyRef Name="telephone_id" />
+      <PropertyRef Name="callDate" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="familyName" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="num" Type="Int32" Nullable="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <Property Name="unitName" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="roleName" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="number" Type="Int32" Nullable="false" />
+    <Property Name="callDuration" Type="Int32" Nullable="false" />
+    <Property Name="callType" Type="Boolean" Nullable="false" />
+    <Property Name="telephone_id" Type="Int32" Nullable="false" />
+    <Property Name="comment" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="callDate" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_call_number">
+    <End Type="manageCallsModel.number" Role="number" Multiplicity="1" />
+    <End Type="manageCallsModel.call" Role="call" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="number">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="call">
+        <PropertyRef Name="number" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_call_telephone">
+    <End Type="manageCallsModel.telephone" Role="telephone" Multiplicity="1" />
+    <End Type="manageCallsModel.call" Role="call" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="telephone">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="call">
+        <PropertyRef Name="telephone_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_contact_user">
+    <End Type="manageCallsModel.user" Role="user" Multiplicity="1" />
+    <End Type="manageCallsModel.contact" Role="contact" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="contact">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_telephone_contact">
+    <End Type="manageCallsModel.contact" Role="contact" Multiplicity="1" />
+    <End Type="manageCallsModel.telephone" Role="telephone" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="contact">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="telephone">
+        <PropertyRef Name="contact_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_log_user">
+    <End Type="manageCallsModel.user" Role="user" Multiplicity="1" />
+    <End Type="manageCallsModel.log" Role="log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="log">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_number_user">
+    <End Type="manageCallsModel.user" Role="user" Multiplicity="1" />
+    <End Type="manageCallsModel.number" Role="number" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="number">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_roleInUnit_roles">
+    <End Type="manageCallsModel.role" Role="role" Multiplicity="1" />
+    <End Type="manageCallsModel.roleInUnit" Role="roleInUnit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="role">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="roleInUnit">
+        <PropertyRef Name="role_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_roleInUnit_unit">
+    <End Type="manageCallsModel.unit" Role="unit" Multiplicity="1" />
+    <End Type="manageCallsModel.roleInUnit" Role="roleInUnit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="unit">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="roleInUnit">
+        <PropertyRef Name="unit_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_roleInUnit_user">
+    <End Type="manageCallsModel.user" Role="user" Multiplicity="1" />
+    <End Type="manageCallsModel.roleInUnit" Role="roleInUnit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="roleInUnit">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

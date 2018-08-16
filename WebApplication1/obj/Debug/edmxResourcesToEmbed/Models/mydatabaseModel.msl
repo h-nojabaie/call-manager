@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="manageCallsModelStoreContainer" CdmEntityContainer="manageCallsEntities1">
+    <EntitySetMapping Name="calls">
+      <EntityTypeMapping TypeName="manageCallsModel.call">
+        <MappingFragment StoreEntitySet="call">
+          <ScalarProperty Name="callDate" ColumnName="callDate" />
+          <ScalarProperty Name="comment" ColumnName="comment" />
+          <ScalarProperty Name="telephone_id" ColumnName="telephone_id" />
+          <ScalarProperty Name="callType" ColumnName="callType" />
+          <ScalarProperty Name="callDuration" ColumnName="callDuration" />
+          <ScalarProperty Name="number" ColumnName="number" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="contacts">
+      <EntityTypeMapping TypeName="manageCallsModel.contact">
+        <MappingFragment StoreEntitySet="contact">
+          <ScalarProperty Name="createDate" ColumnName="createDate" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="isPublic" ColumnName="isPublic" />
+          <ScalarProperty Name="contactName" ColumnName="contactName" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="logs">
+      <EntityTypeMapping TypeName="manageCallsModel.log">
+        <MappingFragment StoreEntitySet="log">
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="numbers">
+      <EntityTypeMapping TypeName="manageCallsModel.number">
+        <MappingFragment StoreEntitySet="number">
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="createDate" ColumnName="createDate" />
+          <ScalarProperty Name="num" ColumnName="num" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="roleInUnits">
+      <EntityTypeMapping TypeName="manageCallsModel.roleInUnit">
+        <MappingFragment StoreEntitySet="roleInUnit">
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="unit_id" ColumnName="unit_id" />
+          <ScalarProperty Name="role_id" ColumnName="role_id" />
+          <ScalarProperty Name="createDate" ColumnName="createDate" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="roles">
+      <EntityTypeMapping TypeName="manageCallsModel.role">
+        <MappingFragment StoreEntitySet="roles">
+          <ScalarProperty Name="unitID" ColumnName="unitID" />
+          <ScalarProperty Name="createDate" ColumnName="createDate" />
+          <ScalarProperty Name="roleName" ColumnName="roleName" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="manageCallsModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="telephones">
+      <EntityTypeMapping TypeName="manageCallsModel.telephone">
+        <MappingFragment StoreEntitySet="telephone">
+          <ScalarProperty Name="contact_id" ColumnName="contact_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="units">
+      <EntityTypeMapping TypeName="manageCallsModel.unit">
+        <MappingFragment StoreEntitySet="unit">
+          <ScalarProperty Name="createDate" ColumnName="createDate" />
+          <ScalarProperty Name="unitName" ColumnName="unitName" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="manageCallsModel.user">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="accepted" ColumnName="accepted" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="createDate" ColumnName="createDate" />
+          <ScalarProperty Name="nationalityCode" ColumnName="nationalityCode" />
+          <ScalarProperty Name="familyName" ColumnName="familyName" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="view_rawReports">
+      <EntityTypeMapping TypeName="manageCallsModel.view_rawReports">
+        <MappingFragment StoreEntitySet="view_rawReports">
+          <ScalarProperty Name="callDate" ColumnName="callDate" />
+          <ScalarProperty Name="comment" ColumnName="comment" />
+          <ScalarProperty Name="telephone_id" ColumnName="telephone_id" />
+          <ScalarProperty Name="callType" ColumnName="callType" />
+          <ScalarProperty Name="callDuration" ColumnName="callDuration" />
+          <ScalarProperty Name="number" ColumnName="number" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="roleName" ColumnName="roleName" />
+          <ScalarProperty Name="unitName" ColumnName="unitName" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="num" ColumnName="num" />
+          <ScalarProperty Name="familyName" ColumnName="familyName" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="view_roleAndUnit">
+      <EntityTypeMapping TypeName="manageCallsModel.view_roleAndUnit">
+        <MappingFragment StoreEntitySet="view_roleAndUnit">
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="unit_id" ColumnName="unit_id" />
+          <ScalarProperty Name="role_id" ColumnName="role_id" />
+          <ScalarProperty Name="createDate" ColumnName="createDate" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="unitName" ColumnName="unitName" />
+          <ScalarProperty Name="unitID" ColumnName="unitID" />
+          <ScalarProperty Name="roleName" ColumnName="roleName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

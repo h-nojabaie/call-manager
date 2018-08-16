@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="../content/user.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet"/>
+</head>
+
+<body>
+
+
+    <style>
+        body, div, h1, h2, h3, h4, h5, h6, p, ul, ol, li, dl, dt, dd, img, form, fieldset, input, textarea, blockquote {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            text-align: center;
+        }
+
+        body {
+            background: #24d6bf;
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 18px;
+            line-height: 40px;
+        }
+
+        .logo {
+            height: 115px;
+            width: 263px;
+            margin: 20px auto 0px auto;
+            background: url(logo.png);
+        }
+
+        nav {
+            margin: auto;
+            text-align: right;
+        }
+
+            nav ul ul {
+                display: none;
+            }
+
+            nav ul li:hover > ul {
+                display: block;
+            }
+
+            nav ul {
+                background: #f1f4f7;
+                box-shadow: 0px 0px 9px rgba(0,0,0,0.15);
+                padding: 0 20px;
+                border-radius: 10px;
+                list-style: none;
+                position: relative;
+                display: inline-table;
+            }
+
+                nav ul:after {
+                    content: "";
+                    clear: both;
+                    display: block;
+                }
+
+                nav ul li {
+                    float: right;
+                    position: relative;
+                    font-weight: bold;
+                }
+
+                    nav ul li:hover {
+                        background: #a70101;
+                    }
+
+                        nav ul li:hover a {
+                            color: #fff;
+                        }
+
+                    nav ul li a {
+                        display: block;
+                        padding: 15px 32px;
+                        color: #4e4e4e;
+                        text-decoration: none;
+                    }
+
+                nav ul ul {
+                    background: #9c0000;
+                    border-radius: 0px;
+                    padding: 0;
+                    position: absolute;
+                    top: 100%;
+                    right: 0;
+                    width: 200px;
+                }
+
+                    nav ul ul li {
+                        float: none;
+                        border-top: 1px solid #940000;
+                        border-bottom: 1px solid #940000;
+                        position: relative;
+                    }
+
+                        nav ul ul li a {
+                            padding: 15px 40px;
+                            color: #fff;
+                        }
+
+                            nav ul ul li a:hover {
+                                background: #112f44;
+                            }
+
+                    nav ul ul ul {
+                        position: absolute;
+                        right: 100%;
+                        top: 0;
+                    }
+    </style>
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>

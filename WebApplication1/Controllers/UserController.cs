@@ -66,13 +66,12 @@ namespace WebApplication1.Controllers
 
             if (query.Count != 0)
             {
-                ViewBag.SuccessMessage = "welcome";
-                return View("Login", new Login());
+                return RedirectToAction("index", "AdminViewCalls");
             }
             else
             {
 
-                ViewBag.SuccessMessage = "try again";
+                ViewBag.SuccessMessage = "تلاش مجدد ";
                 return View("Login", new Login());
             }
         }

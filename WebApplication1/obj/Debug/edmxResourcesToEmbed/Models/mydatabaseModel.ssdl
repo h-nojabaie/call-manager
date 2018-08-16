@@ -1,0 +1,340 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="manageCallsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="call">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="number" Type="int" Nullable="false" />
+    <Property Name="callDuration" Type="int" Nullable="false" />
+    <Property Name="callType" Type="bit" Nullable="false" />
+    <Property Name="telephone_id" Type="int" Nullable="false" />
+    <Property Name="comment" Type="nchar" MaxLength="10" />
+    <Property Name="callDate" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="contact">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="contactName" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="isPublic" Type="bit" Nullable="false" />
+    <Property Name="user_id" Type="int" Nullable="false" />
+    <Property Name="createDate" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="log">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="date" Type="int" Nullable="false" />
+    <Property Name="user_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="number">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="num" Type="int" Nullable="false" />
+    <Property Name="createDate" Type="int" Nullable="false" />
+    <Property Name="user_id" Type="int" Nullable="false" />
+    <Property Name="active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="roleInUnit">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="createDate" Type="int" Nullable="false" />
+    <Property Name="role_id" Type="int" Nullable="false" />
+    <Property Name="unit_id" Type="int" Nullable="false" />
+    <Property Name="user_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="roles">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="roleName" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="createDate" Type="int" Nullable="false" />
+    <Property Name="unitID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="telephone">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="contact_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="unit">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="unitName" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="createDate" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userName" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="password" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="name" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="familyName" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="nationalityCode" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="createDate" Type="int" Nullable="false" />
+    <Property Name="email" Type="nchar" MaxLength="100" Nullable="false" />
+    <Property Name="gender" Type="bit" Nullable="false" />
+    <Property Name="accepted" Type="bit" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'manageCalls.dbo.view_rawReports' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="view_rawReports">
+    <Key>
+      <PropertyRef Name="name" />
+      <PropertyRef Name="familyName" />
+      <PropertyRef Name="num" />
+      <PropertyRef Name="active" />
+      <PropertyRef Name="unitName" />
+      <PropertyRef Name="roleName" />
+      <PropertyRef Name="id" />
+      <PropertyRef Name="number" />
+      <PropertyRef Name="callDuration" />
+      <PropertyRef Name="callType" />
+      <PropertyRef Name="telephone_id" />
+      <PropertyRef Name="callDate" />
+    </Key>
+    <Property Name="name" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="familyName" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="num" Type="int" Nullable="false" />
+    <Property Name="active" Type="bit" Nullable="false" />
+    <Property Name="unitName" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="roleName" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="number" Type="int" Nullable="false" />
+    <Property Name="callDuration" Type="int" Nullable="false" />
+    <Property Name="callType" Type="bit" Nullable="false" />
+    <Property Name="telephone_id" Type="int" Nullable="false" />
+    <Property Name="comment" Type="nchar" MaxLength="10" />
+    <Property Name="callDate" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'manageCalls.dbo.view_roleAndUnit' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="view_roleAndUnit">
+    <Key>
+      <PropertyRef Name="roleName" />
+      <PropertyRef Name="unitID" />
+      <PropertyRef Name="unitName" />
+      <PropertyRef Name="id" />
+      <PropertyRef Name="createDate" />
+      <PropertyRef Name="role_id" />
+      <PropertyRef Name="unit_id" />
+      <PropertyRef Name="user_id" />
+    </Key>
+    <Property Name="roleName" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="unitID" Type="int" Nullable="false" />
+    <Property Name="unitName" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="createDate" Type="int" Nullable="false" />
+    <Property Name="role_id" Type="int" Nullable="false" />
+    <Property Name="unit_id" Type="int" Nullable="false" />
+    <Property Name="user_id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_call_number">
+    <End Role="number" Type="Self.number" Multiplicity="1" />
+    <End Role="call" Type="Self.call" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="number">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="call">
+        <PropertyRef Name="number" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_call_telephone">
+    <End Role="telephone" Type="Self.telephone" Multiplicity="1" />
+    <End Role="call" Type="Self.call" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="telephone">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="call">
+        <PropertyRef Name="telephone_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_contact_user">
+    <End Role="users" Type="Self.users" Multiplicity="1" />
+    <End Role="contact" Type="Self.contact" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="contact">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_log_user">
+    <End Role="users" Type="Self.users" Multiplicity="1" />
+    <End Role="log" Type="Self.log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="log">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_number_user">
+    <End Role="users" Type="Self.users" Multiplicity="1" />
+    <End Role="number" Type="Self.number" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="number">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_roleInUnit_roles">
+    <End Role="roles" Type="Self.roles" Multiplicity="1" />
+    <End Role="roleInUnit" Type="Self.roleInUnit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="roles">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="roleInUnit">
+        <PropertyRef Name="role_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_roleInUnit_unit">
+    <End Role="unit" Type="Self.unit" Multiplicity="1" />
+    <End Role="roleInUnit" Type="Self.roleInUnit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="unit">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="roleInUnit">
+        <PropertyRef Name="unit_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_roleInUnit_user">
+    <End Role="users" Type="Self.users" Multiplicity="1" />
+    <End Role="roleInUnit" Type="Self.roleInUnit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="roleInUnit">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_telephone_contact">
+    <End Role="contact" Type="Self.contact" Multiplicity="1" />
+    <End Role="telephone" Type="Self.telephone" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="contact">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="telephone">
+        <PropertyRef Name="contact_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="manageCallsModelStoreContainer">
+    <EntitySet Name="call" EntityType="Self.call" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="contact" EntityType="Self.contact" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="log" EntityType="Self.log" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="number" EntityType="Self.number" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="roleInUnit" EntityType="Self.roleInUnit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="roles" EntityType="Self.roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="telephone" EntityType="Self.telephone" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="unit" EntityType="Self.unit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="view_rawReports" EntityType="Self.view_rawReports" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [view_rawReports].[name] AS [name], 
+    [view_rawReports].[familyName] AS [familyName], 
+    [view_rawReports].[num] AS [num], 
+    [view_rawReports].[active] AS [active], 
+    [view_rawReports].[unitName] AS [unitName], 
+    [view_rawReports].[roleName] AS [roleName], 
+    [view_rawReports].[id] AS [id], 
+    [view_rawReports].[number] AS [number], 
+    [view_rawReports].[callDuration] AS [callDuration], 
+    [view_rawReports].[callType] AS [callType], 
+    [view_rawReports].[telephone_id] AS [telephone_id], 
+    [view_rawReports].[comment] AS [comment], 
+    [view_rawReports].[callDate] AS [callDate]
+    FROM [dbo].[view_rawReports] AS [view_rawReports]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="view_roleAndUnit" EntityType="Self.view_roleAndUnit" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [view_roleAndUnit].[roleName] AS [roleName], 
+    [view_roleAndUnit].[unitID] AS [unitID], 
+    [view_roleAndUnit].[unitName] AS [unitName], 
+    [view_roleAndUnit].[id] AS [id], 
+    [view_roleAndUnit].[createDate] AS [createDate], 
+    [view_roleAndUnit].[role_id] AS [role_id], 
+    [view_roleAndUnit].[unit_id] AS [unit_id], 
+    [view_roleAndUnit].[user_id] AS [user_id]
+    FROM [dbo].[view_roleAndUnit] AS [view_roleAndUnit]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_call_number" Association="Self.FK_call_number">
+      <End Role="number" EntitySet="number" />
+      <End Role="call" EntitySet="call" />
+    </AssociationSet>
+    <AssociationSet Name="FK_call_telephone" Association="Self.FK_call_telephone">
+      <End Role="telephone" EntitySet="telephone" />
+      <End Role="call" EntitySet="call" />
+    </AssociationSet>
+    <AssociationSet Name="FK_contact_user" Association="Self.FK_contact_user">
+      <End Role="users" EntitySet="users" />
+      <End Role="contact" EntitySet="contact" />
+    </AssociationSet>
+    <AssociationSet Name="FK_log_user" Association="Self.FK_log_user">
+      <End Role="users" EntitySet="users" />
+      <End Role="log" EntitySet="log" />
+    </AssociationSet>
+    <AssociationSet Name="FK_number_user" Association="Self.FK_number_user">
+      <End Role="users" EntitySet="users" />
+      <End Role="number" EntitySet="number" />
+    </AssociationSet>
+    <AssociationSet Name="FK_roleInUnit_roles" Association="Self.FK_roleInUnit_roles">
+      <End Role="roles" EntitySet="roles" />
+      <End Role="roleInUnit" EntitySet="roleInUnit" />
+    </AssociationSet>
+    <AssociationSet Name="FK_roleInUnit_unit" Association="Self.FK_roleInUnit_unit">
+      <End Role="unit" EntitySet="unit" />
+      <End Role="roleInUnit" EntitySet="roleInUnit" />
+    </AssociationSet>
+    <AssociationSet Name="FK_roleInUnit_user" Association="Self.FK_roleInUnit_user">
+      <End Role="users" EntitySet="users" />
+      <End Role="roleInUnit" EntitySet="roleInUnit" />
+    </AssociationSet>
+    <AssociationSet Name="FK_telephone_contact" Association="Self.FK_telephone_contact">
+      <End Role="contact" EntitySet="contact" />
+      <End Role="telephone" EntitySet="telephone" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,8 +1,41 @@
-﻿
+﻿@model WebApplication1.Models.view_rawReports
 @{
-    ViewBag.Title = "report";
+    ViewBag.Title = "????? ??";
     Layout = "~/Views/Shared/Layout/_LayoutPage.cshtml";
 }
 
-<h2>report</h2>
+@using (Html.BeginForm())
+{
 
+}
+<table class="table">
+    <tr>
+        <th>نام</th>
+        <th>نام خانوادگی</th>
+        <th>شماره ی داخلی</th>
+        <th>بخش</th>
+        <th>سمت شغلی</th>
+        <th>نوع تماس</th>
+        <th>شماره ی تماس</th>
+        @*<th>نام مخاطب</th>*@
+        <th>مدت تماس</th>
+        <th>تاریخ تماس</th>
+        <th>توضیحات</th>
+        <th>وضعیت شماره ی داخلی</th>
+    </tr>
+    @*@foreach (var item in returnReport)
+        <tr>
+            <th>@item.name</th>
+            <th>@item.familyName</th>
+            <th>@item.number</th>
+            <th>@item.unitName</th>
+            <th>@item.roleName</th>
+            <th>@item.callType</th>
+            <th>@item.calledNumber</th>
+            <th>@item.callDuration</th>
+            <th>@item.callDate</th>
+            <th>@item.comment</th>
+            <th>@item.active</th>
+        </tr>*@
+
+</table>

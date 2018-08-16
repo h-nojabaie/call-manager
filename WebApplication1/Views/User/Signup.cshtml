@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Signup";
-    Layout = "~/Views/Shared/Layout/_LayoutPage.cshtml";
+    Layout = "~/Views/Shared/Layout/_UserLayout.cshtml";
 }
 
 <h2>عضویت</h2>
@@ -10,6 +10,7 @@
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
+    
     
 <div class="form-horizontal">
     <hr />
@@ -25,7 +26,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.password,"رمز عبور", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.PasswordFor(model => model.password, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -33,7 +34,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.ConfirmPassword, "تکرار رمز عبور", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.PasswordFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -86,11 +87,6 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="عضویت" class="btn btn-default" />
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
             <label class="label-success">@ViewBag.SuccessMessage</label>
         </div>
     </div>
@@ -99,11 +95,7 @@
             <label class="label-danger">@ViewBag.DuplicateMessage</label>
         </div>
     </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <a href="@Url.Action("Login","User")" class="btn btn-success">ورود</a>
-        </div>
-    </div>
+    
 </div>
 }
 

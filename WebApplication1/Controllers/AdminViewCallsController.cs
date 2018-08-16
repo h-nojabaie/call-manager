@@ -122,15 +122,21 @@ namespace WebApplication1.Controllers
             } 
             return View();
         }
-       //-----------------------گزارش گیری-----------------------------//
-        public ActionResult report ()
-        {
-            return View();
-        }
+        //-----------------------گزارش گیری-----------------------------//
         [HttpPost]
-        public ActionResult report(string lastName, int? number, string chosenRole, int startDate, int finishDate, int? duration)
+        public ActionResult report(view_rawReports vr)
         {
-            return View();
-        }
+            string lastName = vr.familyName;
+            string number = vr.calledNumber;
+            string chosenRole = vr.roleName;
+            DateTime startDate = vr.callDate;
+            DateTime finishDate = vr.callDate;
+            TimeSpan? duration = vr.callDuration;
+
+            var returnReport = ourMethodsClass.shownReport(lastName, number, chosenRole, startDate, finishDate, duration);
+
+            return View(returnReport);
+        
+    }
     }
 }
